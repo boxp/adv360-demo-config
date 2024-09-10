@@ -11,11 +11,10 @@
 #define ___ &trans
 
 #define QWERTY 0
-#define COLEMAK 1
-#define KEYPAD 2
-#define FN 3
-#define MOD 4
-#define MS 5
+#define FN 1
+#define MOD 2
+#define MS 3
+#define GAME 4
 
 / {
     /* remove unused keys from layout and move thumb cluster to bottom */
@@ -28,40 +27,14 @@
 
         base_layer {
             bindings = <
-                &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &tog KEYPAD    &mo MOD   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
-                &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &to QWERTY     &tog MS   &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSLH
-                &kp ESC   &kp A     &kp S     &kp D     &kp F     &kp G     &to COLEMAK    &none     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+                &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp GRAVE      &kp GRAVE &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+                &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp LEFT_BRACKET &kp RIGHT_BRACKET   &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSLH
+                &kp ESC   &kp A     &kp S     &kp D     &kp F     &kp G     &kp DEL    &kp BACKSPACE &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
                 &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B                              &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
-                &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                                              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
-                                                                  &kp LCTRL &kp LALT       &kp LGUI  &kp RCTRL
-                                                        &kp BSPC  &kp DEL   &kp HOME       &kp PG_UP &kp ENTER &kp SPACE
-                                                                            &kp END        &kp PG_DN
-            >;
-        };
-
-        colemak_layer {
-            bindings = <
-                ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___       ___       ___       ___
-                ___       &kp Q     &kp W     &kp F     &kp P     &kp B     ___            ___       &kp J     &kp L     &kp U     &kp Y     &kp SQT   &kp BSLH
-                ___       &kp A     &kp R     &kp S     &kp T     &kp G     ___            ___       &kp M     &kp N     &kp E     &kp I     &kp O     &kp FSLH
-                ___       &kp Z     &kp X     &kp C     &kp D     &kp V                              &kp K     &kp H     &kp COMMA &kp DOT   &kp SEMI  ___
-                ___       ___       ___       ___       ___                                                    ___       ___       ___       ___       ___
-                                                                  ___       ___            ___       ___
-                                                        ___       ___       ___            ___       ___       ___
-                                                                            ___            ___
-            >;
-        };
-
-        keypad {
-            bindings = <
-                ___       ___       ___       ___       ___       ___       ___            ___       ___       &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY ___
-                ___       ___       ___       ___       ___       ___       ___            ___       ___       &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    ___
-                ___       ___       ___       ___       ___       ___       ___            ___       ___       &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_PLUS     ___
-                ___       ___       ___       ___       ___       ___                                ___       &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    ___
-                ___       ___       ___       ___       ___                                                    &kp KP_N0  ___          &kp KP_DOT    ___             ___
-                                                                  ___       ___            ___       ___
-                                                        ___       ___       ___            ___       ___       ___
-                                                                            ___            ___
+                &mo FN    &kp SINGLE_QUOTE &mo MOD &kp LEFT_ALT &kp LEFT_GUI                                             &kp LEFT  &kp DOWN  &kp UP &kp RIGHT &mo MOD
+                                                                  &to QWERTY &to FN        &to FN    &to QWERTY
+                                                        &kp LEFT_GUI  &kp ESC &to MS       &to MS    &kp ENTER &kp SPACE
+                                                                            &to GAME       &to GAME
             >;
         };
 
@@ -94,13 +67,26 @@
         mouse {
             bindings = <
                 ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___       ___       ___       ___
+                ___       ___       U_MS_U    ___       ___       ___       ___            ___       ___       ___       $to QWERTY ___      ___       ___
+                ___       U_MS_L    U_MS_D    U_MS_R    ___       ___       ___            ___       $kp LEFT  $kp DOWN  $kp UP    $kp RIGHT ___       $kp C_PLAY
+                ___       ___       ___       ___       ___       ___                                ___       ___       $kp C_PREV $kp C_NEXT ___     ___
+                ___       ___       ___       ___       ___                                                    $kp C_VOL_UP $kp C_VOL_DN $kp C_MUTE ___ ___
+                                                                  U_BTN3    ___            ___       U_BTN3
+                                                        U_BTN1    U_BTN2    U_WH_L         U_WH_U    U_BTN1    U_BTN2
+                                                                            U_WH_R         U_WH_D
+            >;
+        };
+
+        game {
+            bindings = <
+                ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___       ___       ___       ___
                 ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___       ___       ___       ___
                 ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___       ___       ___       ___
                 ___       ___       ___       ___       ___       ___                                ___       ___       ___       ___       ___       ___
-                ___       ___       ___       U_MS_L    U_MS_R                                                 U_MS_U    U_MS_D    ___       ___       ___
-                                                                  U_BTN3    ___            ___       U_BTN3
-                                                        U_BTN1    U_BTN2    U_WH_L         U_WH_U    U_BTN2    U_BTN1
-                                                                            U_WH_R         U_WH_D
+                ___       ___       ___       ___       ___                                                    ___       ___       ___       ___       &kp PRINTSCREEN
+                                                                  ___       ___            ___       ___
+                                                        $kp SPACE ___       ___            ___       ___       ___
+                                                                            ___            ___
             >;
         };
 
