@@ -33,7 +33,7 @@
                 &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B                              &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
                 &mo FN    &kp SINGLE_QUOTE &mo MOD &kp LEFT_ALT &kp LEFT_GUI                                             &kp LEFT  &kp DOWN  &kp UP &kp RIGHT &mo MOD
                                                                   &to QWERTY &to FN        &to FN    &to QWERTY
-                                                        &kp LEFT_GUI  &kp ESC &to MS       &to MS    &kp ENTER &kp SPACE
+                                                        &kp LEFT_GUI  &mt LALT ESC &to MS       &to MS    &kp ENTER &kp SPACE
                                                                             &to GAME       &to GAME
             >;
         };
